@@ -1,0 +1,2 @@
+# doom-config
+No stealerino
