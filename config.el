@@ -58,10 +58,10 @@
 
 
 ;; Setup folder
-(setq default-directory "C:/Users/Niku/Documents/")
+(setq default-directory "~/Documents/")
 
 ;; Setup projectile
-(setq projectile-project-search-path '("~/Documents/Codes/" "~/.doom.d"))
+(setq projectile-project-search-path '("~/Documents/Codes/" "~/.doom.d/" "~/Documents/repos/"))
 
 ;; Window size on startup
 (setq initial-frame-alist '((left . 20) (top . 20 ) (width . 175) (height . 65)))
