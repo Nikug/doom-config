@@ -55,6 +55,5 @@
 (package! tide)
 
 ;; Experimental tsx mode
-(package! rainbow-delimiters)
 (package! tree-sitter)
 (package! tree-sitter-langs)

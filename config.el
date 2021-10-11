@@ -74,9 +74,8 @@
       :g "M-j" 'drag-stuff-down)
 
 ;; Experimental Typescript support in .tsx files
-(require 'tree-sitter)
-(require 'tree-sitter-langs)
-(define-derived-mode typescript-tsx-mode typescript-mode "tsx")
-(add-hook typescript-tsx-mode-hook #'tree-sitter-hl-mode)
+(tree-sitter-require 'typescript)
+(define-derived-mode typescript-tsx-mode typescript-mode "React Typescript")
+(add-hook 'typescript-tsx-mode-hook #'tree-sitter-hl-mode)
 (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode)))
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
