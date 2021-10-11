@@ -51,5 +51,10 @@
 
 (package! prettier-js)
 (package! eslint-fix)
-(package! evil-tutor)
 (package! typescript-mode)
+(package! tide)
+
+;; Experimental tsx mode
+(package! rainbow-delimiters)
+(package! tree-sitter)
+(package! tree-sitter-langs)

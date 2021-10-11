@@ -35,7 +35,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -67,4 +66,17 @@
 (setq initial-frame-alist '((left . 20) (top . 20 ) (width . 175) (height . 65)))
 
 ;; Prettier config
+(setq +format-with-lsp nil)
 (add-hook 'web-mode-hook 'prettier-js-mode)
+
+;; Custom keybinds
+(map! :g "M-k" 'drag-stuff-up
+      :g "M-j" 'drag-stuff-down)
+
+;; Experimental Typescript support in .tsx files
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+(define-derived-mode typescript-tsx-mode typescript-mode "tsx")
+(add-hook typescript-tsx-mode-hook #'tree-sitter-hl-mode)
+(add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode)))
