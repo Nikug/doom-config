@@ -63,7 +63,7 @@
 (setq projectile-project-search-path '("~/Documents/Codes/" "~/.doom.d/" "~/Documents/repos/"))
 
 ;; Window size on startup
-(setq initial-frame-alist '((left . 20) (top . 20 ) (width . 175) (height . 65)))
+(setq initial-frame-alist '((width . 175) (height . 65)))
 
 ;; Prettier config
 (setq +format-with-lsp nil)
@@ -74,8 +74,19 @@
       :g "M-j" 'drag-stuff-down)
 
 ;; Experimental Typescript support in .tsx files
-(tree-sitter-require 'typescript)
-(define-derived-mode typescript-tsx-mode typescript-mode "React Typescript")
-(add-hook 'typescript-tsx-mode-hook #'tree-sitter-hl-mode)
-(add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
+(use-package! tree-sitter
+  :config
+  (setq tree-sitter-hl-use-font-lock-keywords nil)
+  (define-derived-mode typescript-tsx-mode typescript-mode "React Typescript")
+  (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
+  (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
+)
+
+(use-package! tree-sitter-langs
+  :after tree-sitter
+  :config
+  (tree-sitter-require 'tsx)
+  (tree-sitter-require 'typescript)
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
+)
