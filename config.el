@@ -25,7 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-monokai-pro)
+;; (setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-vibrant)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -77,11 +78,9 @@
 (use-package! tree-sitter
   :config
   (setq tree-sitter-hl-use-font-lock-keywords nil)
-  (define-derived-mode typescript-tsx-mode typescript-mode "React Typescript")
   (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
 )
-
 (use-package! tree-sitter-langs
   :after tree-sitter
   :config
@@ -89,4 +88,16 @@
   (tree-sitter-require 'typescript)
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
+)
+
+;; Set default tabs to 2 spaces
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq indent-line-function 'insert-tab)
+(setq
+  web-mode-markup-indent-offset 2
+  web-mode-css-indent-offset 2
+  web-mode-code-indent-offset 2
+  js-indent-level 2
+  typescript-indent-level 2
 )
