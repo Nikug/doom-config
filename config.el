@@ -77,7 +77,7 @@
 ;; Experimental Typescript support in .tsx files
 (use-package! tree-sitter
   :config
-  (setq tree-sitter-hl-use-font-lock-keywords nil)
+  (setq tree-sitter-hl-use-font-lock-keywords t)
   (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
 )
