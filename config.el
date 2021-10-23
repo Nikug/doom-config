@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Niku"
@@ -35,6 +34,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+(setq-default fill-column -1)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -99,10 +99,20 @@
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
 )
 
+;; Fix company autocomplete freezing in tsx mode
+(defun web-mode-hook ()
+  "Hooks for Web mode."
+  (remove-hook 'yas-after-exit-snippet-hook
+               'web-mode-yasnippet-exit-hook t)
+  (remove-hook 'yas/after-exit-snippet-hook
+               'web-mode-yasnippet-exit-hook t)
+  )
+(add-hook 'web-mode-hook  'web-mode-hook)
+
 ;; Set default tabs to 2 spaces
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
-(setq indent-line-function 'insert-tab)
+;;(setq indent-line-function 'insert-tab)
 (setq
   web-mode-markup-indent-offset 2
   web-mode-css-indent-offset 2
@@ -110,3 +120,4 @@
   js-indent-level 2
   typescript-indent-level 2
 )
+
