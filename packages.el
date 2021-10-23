@@ -57,3 +57,11 @@
 ;; Experimental tsx mode
 (package! tree-sitter)
 (package! tree-sitter-langs)
+
+;; Fix gitconfig-mode
+(package! gitconfig-mode
+  :recipe (:host github :repo "magit/git-modes"
+           :files ("gitconfig-mode.el")))
+(package! gitignore-mode
+  :recipe (:host github :repo "magit/git-modes"
+           :files ("gitignore-mode.el")))

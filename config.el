@@ -53,6 +53,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Font options
 (setq doom-font (font-spec :family "Lucida Console" :size 16))
 (setq-default line-spacing 0.3)
 
@@ -74,20 +75,28 @@
 (map! :g "M-k" 'drag-stuff-up
       :g "M-j" 'drag-stuff-down)
 
+(map! :leader
+      :desc "Toggle popups"
+      "t p" #'+popup/toggle)
+
+(map! :leader
+      :desc "Toggle Treemacs"
+      "t t" #'treemacs)
+
 ;; Experimental Typescript support in .tsx files
 (use-package! tree-sitter
   :config
   (setq tree-sitter-hl-use-font-lock-keywords t)
   (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
-  (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
 )
 (use-package! tree-sitter-langs
   :after tree-sitter
   :config
   (tree-sitter-require 'tsx)
   (tree-sitter-require 'typescript)
-  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
 )
 
 ;; Set default tabs to 2 spaces
