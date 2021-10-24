@@ -121,3 +121,8 @@
   typescript-indent-level 2
 )
 
+;; Tailwind css lsp
+(use-package! lsp-tailwindcss
+  :init
+  (setq lsp-tailwindcss-add-on-mode t)
+)
