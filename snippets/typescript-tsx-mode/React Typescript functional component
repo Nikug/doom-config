@@ -1,0 +1,12 @@
+# key: rfc
+# name: React Typescript functional component
+# expand-env: ((yas-indent-line 'fixed))
+# --
+interface Props {
+
+}
+
+export const ${Component} = (props: Props) => {
+
+  return <div></div>
+}
