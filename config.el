@@ -99,6 +99,13 @@
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
 )
 
+;; Disable typescript-language-server logging
+(use-package lsp-mode
+  :hook (typescript-tsx-mode . lsp)
+  :custom
+  (lsp-clients-typescript-server-args '("--stdio" "--tsserver-log-file" "/dev/stderr"))
+)
+
 ;; Fix company autocomplete freezing in tsx mode
 (defun web-mode-hook ()
   "Hooks for Web mode."
