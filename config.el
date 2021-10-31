@@ -83,21 +83,21 @@
       :desc "Toggle Treemacs"
       "t t" #'treemacs)
 
-;; Experimental Typescript support in .tsx files
-(use-package! tree-sitter
-  :config
-  (setq tree-sitter-hl-use-font-lock-keywords t)
-  (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
-)
-(use-package! tree-sitter-langs
-  :after tree-sitter
-  :config
-  (tree-sitter-require 'tsx)
-  (tree-sitter-require 'typescript)
-  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
-  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
-)
+;; Typescript treesitter highlighting support in .tsx files
+;; (use-package! tree-sitter
+;;   :config
+;;   (setq tree-sitter-hl-use-font-lock-keywords t)
+;;   (add-hook! typescript-tsx-mode #'tree-sitter-hl-mode)
+;;   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+;; )
+;; (use-package! tree-sitter-langs
+;;   :after tree-sitter
+;;   :config
+;;   (tree-sitter-require 'tsx)
+;;   (tree-sitter-require 'typescript)
+;;   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx))
+;;   (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . typescript))
+;; )
 
 ;; Disable typescript-language-server logging
 (use-package lsp-mode
